@@ -8,9 +8,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qtarch: [wasm_singlethread, android_arm64_v8a]
+        qt:
+          - 
+            target: wasm
+            arch: wasm_singlethread
+          - 
+            target: android
+            arch: android_arm64_v8a
     steps:        
       - uses: jurplel/install-qt-action@v4.4.1
         with:
           version: '6.7.0'
-          arch: ${{ matrix.qtarch }}
+          target: ${{ matrix.qt.target }}
+          arch: ${{ matrix.qt.arch }}
