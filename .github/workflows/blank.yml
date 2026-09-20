@@ -6,14 +6,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
       matrix:
         qt:
-          - 
-            target: wasm
+          - target: wasm
             arch: wasm_singlethread
-          - 
-            target: android
+          - target: android
             arch: android_arm64_v8a
     steps:        
       - uses: jurplel/install-qt-action@v4.4.1
