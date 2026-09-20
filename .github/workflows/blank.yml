@@ -1,0 +1,16 @@
+name: Test
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        qtarch: [wasm_singlethread, android_arm64_v8a]
+    steps:        
+      - uses: jurplel/install-qt-action@v4.4.1
+        with:
+          version: '6.7.0'
+          arch: ${{ matrix.qtarch }}
